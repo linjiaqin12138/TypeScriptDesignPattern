@@ -1,0 +1,11 @@
+@startuml
+class Creator{
+    + FactoryMethod()
+}
+class ConcreteCreator{
+    + FactoryMethod()
+}
+Product <|-down- ConcreteProduct
+Creator <|-down- ConcreteCreator
+ConcreteProduct <.left. ConcreteCreator: depend on 
+@enduml

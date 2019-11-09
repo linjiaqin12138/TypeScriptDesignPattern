@@ -1,0 +1,40 @@
+@startuml
+class RocketFactory{
+    + buildRocket()
+    + createPayload()
+    + createStages()
+}
+class Rocket {
+    payload
+    stages
+}
+class Payload{
+    weight
+}
+class Stage{
+    engins
+}
+Rocket *-- Payload
+Rocket *-right- Stage 
+Rocket <.right. RocketFactory
+FirstStage -up-|> Stage
+SecondStage -up-|> Stage
+class FreightRocketFactory{
+    static nextSatelliteId
+    + buildRocket()
+    + createPayload()
+    + createStages()
+}
+FreightRocketFactory -up-|> RocketFactory
+FreightRocket -up-|> Rocket
+class FreightRocket{
+    payload
+    stages
+}
+Stallite -up-|> Payload
+class Stallite {
+    weight
+}
+RocketFactory ..> Payload
+RocketFactory ..> Stage
+@enduml
