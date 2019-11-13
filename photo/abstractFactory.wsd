@@ -1,0 +1,47 @@
+@startuml
+
+interface RocketFactory << interface >> {
+    + createRocket(): Rocket
+    + createPayload(): Payload
+    + createStages(): Array<Stage>
+}
+class ExperimentalRocketFactory{
+    + createRocket(): ExperimentalRocket
+    + createPayload(): ExperimentalPayload
+    + createStages(): Array<Stage>
+}
+class FreightRocketFactory {
+    + createRocket(): FreightRocket
+    + createPayload(): Satellite
+    + createStages(): Array<Stage>
+}
+RocketFactory <|-- ExperimentalRocketFactory 
+RocketFactory <|-- FreightRocketFactory
+
+ExperimentalRocketFactory --> ExperimentalRocket 
+FreightRocketFactory --> FreightRocket
+
+class Client {
+    + buildRocket()
+}
+
+Client -up- ExperimentalRocket
+Client -up- FreightRocket
+
+note top of RocketFactory
+    **Abstract factory**: standards of a factory 
+    which provide interfaces for manufacturing 
+    components or complex produces
+end note
+
+note "**Concrete factory**: \nbuild concrete products" as N1
+N1 .left. ExperimentalRocketFactory
+N1 .right. FreightRocketFactory
+note "**Concrete product**" as N2
+N2 .left. ExperimentalRocket
+N2 .right. FreightRocket
+note left of Client 
+    Arranges the production 
+    process across factories
+end note 
+@enduml
