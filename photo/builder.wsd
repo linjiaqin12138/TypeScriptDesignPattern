@@ -1,0 +1,36 @@
+@startuml
+note top of Builder 
+    Define the interface of a builder 
+    that builds products
+end note 
+class Builder{
+    + crateProduct()
+    + addParts()
+    + getProduct()
+}
+note left of ConcreteBuilder
+Implements methods that 
+build parts of the products, 
+and keeps track of the
+current building state.
+end note 
+class ConcreteBuilder extends Builder {
+    + crateProduct()
+    + addParts()
+    + getProduct()
+}
+note right of Director 
+Defines the steps and 
+collaborates with builders 
+to build products.
+end note 
+class Director {
+
+}
+
+class FinalProduct {
+    + parts
+}
+ConcreteBuilder .> FinalProduct
+Builder <- Director 
+@enduml
