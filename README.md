@@ -22,3 +22,7 @@ Abstract Factory Pattern makes the abstraction on top of different concrete fact
 While Factory Patterns expose the internal components , the Builder Pattern encapsulates them by exposing only the building steps and provides the final products directly. At the same time, the Builder Pattern also encapsulates the internal structures of a product. This makes it possible for a more flexible abstraction and implementation of building complex objects.
 ![](photo/builder.png)
 The Builder Pattern has a similar scope to the Abstract Factory Pattern, which extracts abstraction from a complete collection of operations that will finally initiate the products. Compared to the Abstract Factory Pattern, a builder in the Builder Pattern focuses more on the building steps and the association between those steps, while the Abstract Factory Pattern puts that part into the clients and makes its factory focus on producing components.
+
+# Good TypeScript references
+[TypeScript Document In Chinese](https://www.tslang.cn/docs/home.html)
+[TypeScript Deep Dive](https://basarat.gitbooks.io/typescript/)
