@@ -1,0 +1,22 @@
+@startuml
+
+class Flow {
+    - readOnly rollbackStackFunctionList
+    + context 
+    + runOp(operation, input)
+    + runProc(proc, input)
+    - rollback()
+}
+
+note right of Flow
+  <b>runOp</b>: call the operation function with parameters
+  context and input, the operation return output and 
+  rollback function which is push back into 
+  rollbackStackFunctionList
+  <b>runProc</b>: call proc function with parameters
+  Flow and input, and return the result of it. if error occured,
+  run the rollback function.
+  <b>rollback</b>: run all the function in rollbackStackFunctionList
+
+end note
+@enduml
