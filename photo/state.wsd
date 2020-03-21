@@ -1,0 +1,39 @@
+@startuml
+
+class Context {
+    + request()
+
+}
+abstract class State {
+    + handle() 
+}
+State <|-down- StateA
+State <|-down- StateB
+
+Context -right-> State 
+
+abstract class IPlayer {
+    + request(int flag)
+    + setState(PlayerState state)
+    + playVedio()
+    + pause()
+    + stop()
+    + showAD()
+}
+
+abstract class PlayerState {
+    + PLAY_OR_PAUSE=0
+    + STOP = 1
+    IPlayer mPlayer 
+    + setPlayerState(IPlayer player)
+    + handle(int action)
+}
+PlayingState -up-|> PlayerState 
+PausedState -up-|> PlayerState 
+StoppedState -up-|> PlayerState 
+
+VideoPlayer -up-|> IPlayer
+
+IPlayer - PlayerState 
+
+@enduml
